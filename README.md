@@ -2,6 +2,8 @@
 This is for Minecraft spigot 1.15.2 and +
 It is full of the essentials needed for the perfect survival/factions server!
 
+The default config is available [here](https://github.com/ImDaBigBoss/EasyCraft/tree/master/src/config.yml)!
+
 ## What this plugin offers
 * Chat rooms
 * Automatic configuration reboot message + stops the server after 30 seconds
