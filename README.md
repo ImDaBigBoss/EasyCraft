@@ -1,9 +1,9 @@
 # EasyCraft
-This is for Minecraft spigot 1.15.2 and +
-It is full of the essentials needed for the perfect survival/factions server!
-If you want to add anything to this plugin, feel free to create a pull request or an issue!
-
-The default config is available [here](https://github.com/ImDaBigBoss/EasyCraft/tree/master/src/config.yml)!
+This is for Minecraft spigot 1.15.2 and +<br>
+It is full of the essentials needed for the perfect survival/factions server!<br>
+If you want to add anything to this plugin, feel free to create a pull request or an issue!<br>
+<br>
+The default config is available [here](https://github.com/ImDaBigBoss/EasyCraft/tree/master/src/config.yml)!<br>
 
 ## What this plugin offers
 * Chat rooms
@@ -19,21 +19,21 @@ The default config is available [here](https://github.com/ImDaBigBoss/EasyCraft/
 * A teleport ask command
 
 ## Command permissions
-Permissions are given by default execpt if a "{OP}" is written.
-{CONSOLE}: You ***cannot*** use this command if you are not the console
-
-easycraft.chatroom: use /chatroom
-easycraft.confupdate: use /confupdate {CONSOLE}
-easycraft.info: use /info
-easycraft.maintenance: use /maintenance
-easycraft.perks: use /perks
-easycraft.perks.admin: use /perks admin {OP}
-easycraft.rank: use /rank {OP}
-easycraft.setmaxplayers: use /setmaxplayers {CONSOLE}
-easycraft.shout: use /shout
-easycraft.spawn: teleport to spwn
-easycraft.tempban: use /tempban {OP}
-easycraft.tpa, tpahere, tpaccept or tpdeny:
+Permissions are given by default execpt if a "{OP}" is written.<br>
+{CONSOLE}: You ***cannot*** use this command if you are not the console<br>
+<br>
+easycraft.chatroom: use /chatroom<br>
+easycraft.confupdate: use /confupdate {CONSOLE}<br>
+easycraft.info: use /info<br>
+easycraft.maintenance: use /maintenance<br>
+easycraft.perks: use /perks<br>
+easycraft.perks.admin: use /perks admin {OP}<br>
+easycraft.rank: use /rank {OP}<br>
+easycraft.setmaxplayers: use /setmaxplayers {CONSOLE}<br>
+easycraft.shout: use /shout<br>
+easycraft.spawn: teleport to spwn<br>
+easycraft.tempban: use /tempban {OP}<br>
+easycraft.tpa, tpahere, tpaccept or tpdeny:<br>
 
 ## To-do
 * Add an option to enable or disable commands
