@@ -1,6 +1,7 @@
 # EasyCraft
 This is for Minecraft spigot 1.15.2 and +
 It is full of the essentials needed for the perfect survival/factions server!
+If you want to add anything to this plugin, feel free to create a pull request or an issue!
 
 The default config is available [here](https://github.com/ImDaBigBoss/EasyCraft/tree/master/src/config.yml)!
 
