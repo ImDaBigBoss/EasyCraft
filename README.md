@@ -33,7 +33,7 @@ easycraft.setmaxplayers: use /setmaxplayers {CONSOLE}<br>
 easycraft.shout: use /shout<br>
 easycraft.spawn: teleport to spwn<br>
 easycraft.tempban: use /tempban {OP}<br>
-easycraft.tpa, tpahere, tpaccept or tpdeny:<br>
+easycraft.tpa, tpahere, tpaccept or tpdeny: use /tpa, tpahere, tpaccept, tpdeny<br>
 
 ## To-do
 * Add an option to enable or disable commands
