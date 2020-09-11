@@ -3,6 +3,8 @@ Maintenance: off #This is if the maintenance option is enabled (set to 'on' to e
 
 joinText: We hope you enjoy this server! #This is a custom join text you can have. Comment out with # to disable
 
+serverName: MyServer!
+
 infoLines: 2
 info1: ---- Server Name ----
 info2: Site = example.com
