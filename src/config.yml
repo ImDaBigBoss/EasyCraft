@@ -25,4 +25,5 @@ ranks:
 #PLAYERNAME: #you can use '' around the name if it contains other characters than text or numbers
 #  rank: RANKNAME
 
-tpa-keep-alive: 5 #in secounds
+tpa-keep-alive: 30 #in secounds
+confupdate-stop: 30 #in seconds
