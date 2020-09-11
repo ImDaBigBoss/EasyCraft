@@ -20,6 +20,10 @@ public class CommandConfUpdate implements CommandExecutor {
     		return true;
     	}
     	
+    	long stopTime = 30L;
+    	if (plugin.getConfig().contains("confupdate-stop"))
+    		stopTime = plugin.getConfig().getLong("confupdate-stop");
+    	
     	plugin.getServer().broadcastMessage("This server will have to reboot because of some configuration or plugin updates!");
     	plugin.getServer().broadcastMessage("Please finish what you are doing and come back online in about 5 minutes.");
     	
@@ -37,7 +41,7 @@ public class CommandConfUpdate implements CommandExecutor {
             	}
             	plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "stop");
             }
-        }, 600L);
+        }, stopTime * 20L);
     	
 		return true;
     }
