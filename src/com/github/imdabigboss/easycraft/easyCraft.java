@@ -8,6 +8,7 @@ import java.util.*;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.*;
 import org.bukkit.configuration.file.*;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import com.github.imdabigboss.easycraft.commands.*;
@@ -21,9 +22,14 @@ public class easyCraft extends JavaPlugin {
     private static TPAutils tpa;
     private static ymlUtils yml;
     
+    public static String serverName = "My Server!";
+    
     // Fired when plugin is first enabled
     @Override
     public void onEnable() {
+    	if (this.getConfig().contains("serverName"))
+    		serverName = this.getConfig().getString("serverName");
+    	
         plugin = this;
         ranks = new Ranks();
         perks = new Perks();
@@ -44,6 +50,7 @@ public class easyCraft extends JavaPlugin {
         this.getCommand("shout").setExecutor(new CommandShout());
         this.getCommand("info").setExecutor(new CommandInfo());
         this.getCommand("tempban").setExecutor(new CommandTempBan());
+        this.getCommand("hiddenSpec").setExecutor(new CommandHiddenSpec());
         
         this.getCommand("tpa").setExecutor(new CommandTpa());
         this.getCommand("tpahere").setExecutor(new CommandTpa());
@@ -54,6 +61,10 @@ public class easyCraft extends JavaPlugin {
         yml.createConfig("bans.yml");
         if (!yml.getConfig("bans.yml").contains("ban"))
             yml.getConfig("bans.yml").set("ban", 0);
+        
+        for (Player player:  plugin.getServer().getOnlinePlayers()) {
+        	customList(player);
+    	}
     }
     
     // Fired when plugin is disabled
@@ -86,6 +97,18 @@ public class easyCraft extends JavaPlugin {
         return yml;
     }
     
+    public static void customList(Player player) {
+    	String dashes = "";
+        for (int i = 1; i <= serverName.length(); i++) {
+        	dashes = dashes + "-";
+        }
+    	
+    	String playerName = ChatColor.RESET + player.getDisplayName();
+    	
+    	player.setPlayerListName(playerName);
+		player.setPlayerListHeaderFooter(ChatColor.YELLOW + " --- " + serverName + " ---", ChatColor.YELLOW + dashes + "--------");
+    }
+    
     public static ChatColor stingToChatColor(String str) {
         switch(str) {
             case "AQUA": return ChatColor.AQUA;
@@ -108,3 +131,4 @@ public class easyCraft extends JavaPlugin {
         }
     }
 }
+   

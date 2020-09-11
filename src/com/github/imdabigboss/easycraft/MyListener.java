@@ -33,6 +33,8 @@ public class MyListener implements Listener {
 		if (plugin.getServer().getOnlinePlayers().size() >= plugin.getServer().getMaxPlayers()) {
 			plugin.getServer().broadcastMessage("There is now " + ChatColor.RED + plugin.getServer().getOnlinePlayers().size() + ChatColor.RESET + " players connected, maybe a few players could leave to free up space for other players wanting to join!");
 		}
+		
+		easyCraft.customList(player);
     }
 	
 	@EventHandler
