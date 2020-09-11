@@ -8,6 +8,7 @@ The default config is available [here](https://github.com/ImDaBigBoss/EasyCraft/
 ## What this plugin offers
 * Chat rooms
 * Automatic configuration reboot message + stops the server after 30 seconds
+* A hidden spectator mode (currently not finished)
 * A server info command so that you don't have to keep repeating the same things over and over again
 * A maintenance mode so that non-operators can not join (Not working correctly)
 * A perks command
@@ -24,6 +25,7 @@ Permissions are given by default execpt if a "{OP}" is written.<br>
 <br>
 easycraft.chatroom: use /chatroom<br>
 easycraft.confupdate: use /confupdate {CONSOLE}<br>
+easycraft.hiddenSpec: use /hiddenSpec {OP}<br>
 easycraft.info: use /info<br>
 easycraft.maintenance: use /maintenance<br>
 easycraft.perks: use /perks<br>
@@ -37,3 +39,4 @@ easycraft.tpa, tpahere, tpaccept or tpdeny: use /tpa, tpahere, tpaccept, tpdeny<
 
 ## To-do
 * Add an option to enable or disable commands
+* Add a permission to bypass maintenance mode
