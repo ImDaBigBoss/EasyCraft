@@ -1,5 +1,8 @@
 package com.github.imdabigboss.easycraft;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,6 +14,7 @@ public class MyListener implements Listener {
 	private final Ranks ranks = easyCraft.getRanks();
 	private Plugin plugin = easyCraft.getPlugin();
 	private ChatRoom chatRoom = easyCraft.getChatRoom();
+
 	
 	@EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) //when a player joins
@@ -62,7 +66,7 @@ public class MyListener implements Listener {
 	        arguments = message.substring(message.indexOf(" ") + 1, message.length());
 	    }
 	    
-	    if (command.equalsIgnoreCase("tpa") || command.equalsIgnoreCase("tpaccept") || command.equalsIgnoreCase("tpdeny") || command.equalsIgnoreCase("home") || command.equalsIgnoreCase("spawn") || command.equalsIgnoreCase("msg")) {
+	    if (command.equalsIgnoreCase("tpa") || command.equalsIgnoreCase("tpahere") || command.equalsIgnoreCase("tpaccept") || command.equalsIgnoreCase("tpdeny") || command.equalsIgnoreCase("home") || command.equalsIgnoreCase("sethome") || command.equalsIgnoreCase("spawn") || command.equalsIgnoreCase("msg") || command.equalsIgnoreCase("suicide")) {
 	    	
 	    } else {
 	    	String out = "------ COMMAND: " + event.getPlayer().getName() + " ran: " + message + " ------";

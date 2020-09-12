@@ -19,6 +19,14 @@ public class ymlUtils {
 	public FileConfiguration getConfig(String name) {
         return customConfig.get(name);
     }
+	
+	public void saveConfig(String name) {
+		try {
+            customConfig.get(name).save(customConfigFile.get(name));
+        } catch (IOException e) {
+            plugin.getLogger().warning("Unable to save " + name); // shouldn't really happen, but save throws the exception
+        }
+	}
     
     public void createConfig(String name) {
         customConfigFile.put(name, new File(plugin.getDataFolder(), name));

@@ -51,6 +51,7 @@ public class easyCraft extends JavaPlugin {
         this.getCommand("info").setExecutor(new CommandInfo());
         this.getCommand("tempban").setExecutor(new CommandTempBan());
         this.getCommand("hiddenSpec").setExecutor(new CommandHiddenSpec());
+        this.getCommand("suicide").setExecutor(new CommandSuicide());
         
         this.getCommand("tpa").setExecutor(new CommandTpa());
         this.getCommand("tpahere").setExecutor(new CommandTpa());
@@ -59,8 +60,8 @@ public class easyCraft extends JavaPlugin {
         
         this.saveDefaultConfig();
         yml.createConfig("bans.yml");
-        if (!yml.getConfig("bans.yml").contains("ban"))
-            yml.getConfig("bans.yml").set("ban", 0);
+        if (!yml.getConfig("bans.yml").contains("bans"))
+            yml.getConfig("bans.yml").set("bans", 0);
         
         for (Player player:  plugin.getServer().getOnlinePlayers()) {
         	customList(player);
