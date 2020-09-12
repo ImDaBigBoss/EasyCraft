@@ -16,6 +16,7 @@ The default config is available [here](https://github.com/ImDaBigBoss/EasyCraft/
 * A command to set the max players that can join
 * A shout command to chat in the general chat whilst in a chatroom
 * A spawn tp command to teleport players to the spawn
+* A suicide command, use instead of shooting yourself or jumping off a cliff or into lava
 * Tempory bans
 * A teleport ask command
 
@@ -34,6 +35,7 @@ easycraft.rank: use /rank {OP}<br>
 easycraft.setmaxplayers: use /setmaxplayers {CONSOLE}<br>
 easycraft.shout: use /shout<br>
 easycraft.spawn: teleport to spwn<br>
+easycraft.suicide: use /suicide
 easycraft.tempban: use /tempban {OP}<br>
 easycraft.tpa, tpahere, tpaccept or tpdeny: use /tpa, tpahere, tpaccept, tpdeny<br>
 
