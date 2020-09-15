@@ -51,12 +51,18 @@ commands:
       description: Ban people temporarily
       permission: easycraft.tempban
       permission-message: You do not have permission to use this command.
-      usage: /tempban
+      usage: /tempban <player> <hours/days> <amount> [reason]
    hiddenSpec:
       description: get into incognito spectator mode 
       permission: easycraft.hiddenSpec
       permission-message: You do not have permission to use this command.
-      usage: /hiddenSpec
+      usage: /hiddenSpec <on/off>
+      
+   suicide:
+      description: Commit suicide
+      permission: easycraft.suicide
+      permission-message: You do not have permission to use this command.
+      usage: /suicide
    
    tpa:
       description: Teleport to someone
@@ -78,11 +84,17 @@ commands:
       permission: easycraft.tpdeny
       permission-message: You do not have permission to use this command.
       usage: /tpdeny
-   suicide:
-      description: Commit suicide
-      permission: easycraft.suicide
+      
+   home:
+      description: Teleport home
+      permission: easycraft.home
       permission-message: You do not have permission to use this command.
-      usage: /suicide
+      usage: /home <homeNumber>
+   sethome:
+      description: Set your home
+      permission: easycraft.sethome
+      permission-message: You do not have permission to use this command.
+      usage: /sethome <homeNumber>
  
 permissions:
    easycraft.rank:
@@ -123,6 +135,13 @@ permissions:
       default: op
    easycraft.suicide:
       description: Allows you to use the /suicide command.
+      default: true
+   
+   easycraft.home:
+      description: Allows you to use the /home command.
+      default: true
+   easycraft.sethome:
+      description: Allows you to use the /sethome command.
       default: true
       
    easycraft.tpa:
