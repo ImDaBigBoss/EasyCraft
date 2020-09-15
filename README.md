@@ -9,6 +9,7 @@ The default config is available [here](https://github.com/ImDaBigBoss/EasyCraft/
 * Chat rooms
 * Automatic configuration reboot message + stops the server after an amount of time: 30 seconds by default
 * A hidden spectator mode (currently not finished)
+* An option to have homes
 * A server info command so that you don't have to keep repeating the same things over and over again
 * A maintenance mode so that non-operators can not join (Not working correctly)
 * A perks command
@@ -27,6 +28,8 @@ Permissions are given by default execpt if a "{OP}" is written.<br>
 easycraft.chatroom: use /chatroom<br>
 easycraft.confupdate: use /confupdate {CONSOLE}<br>
 easycraft.hiddenSpec: use /hiddenSpec {OP}<br>
+easycraft.home: use /home<br>
+easycraft.sethome: use /sethome<br>
 easycraft.info: use /info<br>
 easycraft.maintenance: use /maintenance<br>
 easycraft.perks: use /perks<br>
