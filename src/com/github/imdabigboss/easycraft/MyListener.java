@@ -1,8 +1,5 @@
 package com.github.imdabigboss.easycraft;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,6 +11,7 @@ public class MyListener implements Listener {
 	private final Ranks ranks = easyCraft.getRanks();
 	private Plugin plugin = easyCraft.getPlugin();
 	private ChatRoom chatRoom = easyCraft.getChatRoom();
+	private ymlUtils yml = easyCraft.getYml();
 
 	
 	@EventHandler
@@ -39,6 +37,14 @@ public class MyListener implements Listener {
 		}
 		
 		easyCraft.customList(player);
+		easyCraft.connectionLog(player.getName(), 1);
+    }
+	
+	@EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) //when a player quits
+    {
+		Player player = event.getPlayer();
+		easyCraft.connectionLog(player.getName(), 2);
     }
 	
 	@EventHandler

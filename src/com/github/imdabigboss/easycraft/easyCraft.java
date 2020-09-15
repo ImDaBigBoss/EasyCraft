@@ -2,12 +2,9 @@ package com.github.imdabigboss.easycraft;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.*;
-import java.util.*;
+import java.util.Date;
 
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.*;
-import org.bukkit.configuration.file.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -58,8 +55,13 @@ public class easyCraft extends JavaPlugin {
         this.getCommand("tpaccept").setExecutor(new CommandTpa());
         this.getCommand("tpdeny").setExecutor(new CommandTpa());
         
+        this.getCommand("home").setExecutor(new CommandHome());
+        this.getCommand("sethome").setExecutor(new CommandHome());
+        
         this.saveDefaultConfig();
+        yml.createConfig("homes.yml");
         yml.createConfig("bans.yml");
+        yml.createConfig("connections.yml");
         if (!yml.getConfig("bans.yml").contains("bans"))
             yml.getConfig("bans.yml").set("bans", 0);
         
@@ -130,6 +132,23 @@ public class easyCraft extends JavaPlugin {
             case "YELLOW": return ChatColor.YELLOW;
             default: return ChatColor.RESET;
         }
+    }
+    
+    public static void connectionLog(String player, int action) {
+    	int num = 0;
+    	if (yml.getConfig("connections.yml").contains("connections"))
+    		num = yml.getConfig("connections.yml").getInt("connections");
+    	
+    	num = num + 1;
+    	String acstr = "ERROR";
+    	if (action == 1) {
+    		acstr = "connected";
+    	} else if (action == 2) {
+    		acstr = "disconnected";
+    	}
+    	yml.getConfig("connections.yml").set("con" + num, new Date().toString() + ": " + player + " -> " + acstr);
+    	yml.getConfig("connections.yml").set("connections", num);
+    	yml.saveConfig("connections.yml");
     }
 }
    

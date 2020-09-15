@@ -43,7 +43,7 @@ public class CommandHiddenSpec implements CommandExecutor {
     
     private void sendHelp(CommandSender sender) {
     	sender.sendMessage("The correct usage is:");
-    	sender.sendMessage("- /vanish on");
-    	sender.sendMessage("- /vanish off");
+    	sender.sendMessage("- /hiddenSpec on");
+    	sender.sendMessage("- /hiddenSpec off");
     }
 }

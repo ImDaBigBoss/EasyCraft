@@ -78,7 +78,7 @@ public class TPAutils {
 		if (!tpaTo.isOnline())
 			return 2;
 		
-		tpaTo.sendMessage(ChatColor.RED + sender.getDisplayName() + " has denyed your tpa request...");
+		tpaTo.sendMessage(ChatColor.RED + sender.getDisplayName() + ChatColor.RED + " has denyed your tpa request...");
 		tpa.remove(sender);
 		tpatype.remove(sender);
 		return 0;
@@ -87,7 +87,7 @@ public class TPAutils {
 	public void timedOut(Player sender, Player target) {
 		if (tpa.containsKey(target)) {
 			if (sender.isOnline())
-				sender.sendMessage(ChatColor.RED + "You teleport request for " + target.getDisplayName() + " has timed out!");
+				sender.sendMessage(ChatColor.RED + "You teleport request for " + target.getDisplayName() + ChatColor.RED + " has timed out!");
 			tpa.remove(target);
 			tpatype.remove(target);
 		}
