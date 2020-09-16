@@ -89,6 +89,8 @@ public class CommandHome implements CommandExecutor {
     	
     	yml.getConfig("homes.yml").set(info + ".Pitch", loc.getPitch());
     	yml.getConfig("homes.yml").set(info + ".Yaw", loc.getYaw());
+	    
+	yml.saveConfig("homes.yml");
     	player.sendMessage(ChatColor.AQUA + "You set your home here!");
     }
 }
