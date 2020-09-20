@@ -1,0 +1,158 @@
+name: EasyCraft
+main: com.github.imdabigboss.easycraft.easyCraft
+version: 1.5
+api-version: 1.15
+
+commands:
+   rank:
+      description: Get or set a pleyer's rank
+      permission: easycraft.rank
+      permission-message: You do not have permission to use this command.
+      usage: /rank <get/set/add/remove/reload/list> [rank/player] [rank] [color]
+   spawn:
+      description: Send to spawn
+      usage: /spawn
+   maintenance:
+      description: Turn on or off maintenance mode
+      permission: easycraft.maintenance
+      permission-message: You do not have permission to use this command.
+      usage: /maintenance <on/off>
+   setmaxplayers:
+      description: Set the max amount of players to join (DO NOT USE)
+      permission: easycraft.setmaxplayers
+      permission-message: You do not have permission to use this command.
+      usage: /setmaxplayers <amount>
+   confupdate:
+      description: Send a message to the players about a server reboot
+      permission: easycraft.confupdate
+      permission-message: You do not have permission to use this command.
+      usage: /confupdate
+   perks:
+      description: Get cool perks!
+      permission: easycraft.perks
+      permission-message: You do not have permission to use this command.
+      usage: /perks
+   chatroom:
+      description: Chat privately with your group
+      permission: easycraft.chatroom
+      permission-message: You do not have permission to use this command.
+      usage: /chatroom <join/create/leave> [room name]
+   shout:
+      description: Chat to people who are not in your chat room
+      permission: easycraft.shout
+      permission-message: You do not have permission to use this command.
+      usage: /shout <message>
+   info:
+      description: Get the info about the server
+      permission: easycraft.info
+      permission-message: You do not have permission to use this command.
+      usage: /info
+   tempban:
+      description: Ban people temporarily
+      permission: easycraft.tempban
+      permission-message: You do not have permission to use this command.
+      usage: /tempban <player> <hours/days> <amount> [reason]
+   hiddenSpec:
+      description: get into incognito spectator mode 
+      permission: easycraft.hiddenSpec
+      permission-message: You do not have permission to use this command.
+      usage: /hiddenSpec <on/off>
+      
+   suicide:
+      description: Commit suicide
+      permission: easycraft.suicide
+      permission-message: You do not have permission to use this command.
+      usage: /suicide
+   
+   tpa:
+      description: Teleport to someone
+      permission: easycraft.tpa
+      permission-message: You do not have permission to use this command.
+      usage: /tpa
+   tpahere:
+      description: Teleport someone to you
+      permission: easycraft.tpahere
+      permission-message: You do not have permission to use this command.
+      usage: /tpahere
+   tpaccept:
+      description: Accept a teleport request
+      permission: easycraft.tpaccept
+      permission-message: You do not have permission to use this command.
+      usage: /tpaccept
+   tpdeny:
+      description: Deny a teleport request
+      permission: easycraft.tpdeny
+      permission-message: You do not have permission to use this command.
+      usage: /tpdeny
+      
+   home:
+      description: Teleport home
+      permission: easycraft.home
+      permission-message: You do not have permission to use this command.
+      usage: /home <homeNumber>
+   sethome:
+      description: Set your home
+      permission: easycraft.sethome
+      permission-message: You do not have permission to use this command.
+      usage: /sethome <homeNumber>
+ 
+permissions:
+   easycraft.rank:
+      description: Allows you to use the /rank command.
+      default: op
+   easycraft.maintenance:
+      description: Allows you to use the /maintenance command.
+      default: op
+   easycraft.spawn:
+      description: Allows you to use the /spawn command.
+      default: true
+   easycraft.setmaxplayers:
+      description: Allows you to use the /setmaxplayers command.
+      default: op
+   easycraft.confupdate:
+      description: Allows you to use the /confudate command.
+      default: op
+   easycraft.perks:
+      description: Allows you to use the /perks command.
+      default: true
+   easycraft.perks.admin:
+      description: Allows you to use the /perks admin command.
+      default: op
+   easycraft.chatroom:
+      description: Allows you to use the /chatroom command.
+      default: true
+   easycraft.shout:
+      description: Allows you to use the /shout command.
+      default: true
+   easycraft.info:
+      description: Allows you to use the /info command.
+      default: true
+   easycraft.tempban:
+      description: Allows you to use the /tempban command.
+      default: op
+   easycraft.hiddenSpec:
+      description: Allows you to use the /hiddenSpec command.
+      default: op
+   easycraft.suicide:
+      description: Allows you to use the /suicide command.
+      default: true
+   
+   easycraft.home:
+      description: Allows you to use the /home command.
+      default: true
+   easycraft.sethome:
+      description: Allows you to use the /sethome command.
+      default: true
+      
+   easycraft.tpa:
+      description: Allows you to use the /tpa command.
+      default: true
+   easycraft.tpahere:
+      description: Allows you to use the /tpahere command.
+      default: true
+   easycraft.tpaccept:
+      description: Allows you to use the /tpaccept command.
+      default: true
+   easycraft.tpdeny:
+      description: Allows you to use the /tpdeny command.
+      default: true
