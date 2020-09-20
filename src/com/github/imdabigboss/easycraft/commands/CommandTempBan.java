@@ -41,7 +41,7 @@ public class CommandTempBan implements CommandExecutor {
     	if (args.length >= 4) {
     		reason = "";
     		for (int i = 3; i <= args.length-1; i++) {
-    			reason = reason + args[i];
+    			reason = reason + args[i] + " ";
     		}
     	}
     	
