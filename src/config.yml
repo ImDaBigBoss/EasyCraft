@@ -1,4 +1,4 @@
-version: 1.6 #DO NOT TOUCH
+version: 1.7 #DO NOT TOUCH
 Maintenance: off #This is if the maintenance option is enabled (set to 'on' to enable), BEWARE! ONLY OPs CAN JOIN IF ENABLED
 
 joinText: We hope you enjoy this server! #This is a custom join text you can have. Comment out with # to disable
