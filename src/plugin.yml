@@ -1,6 +1,6 @@
 name: EasyCraft
 main: com.github.imdabigboss.easycraft.easyCraft
-version: 1.7
+version: 1.8
 api-version: 1.15
 
 commands:
@@ -95,6 +95,11 @@ commands:
       permission: easycraft.sethome
       permission-message: You do not have permission to use this command.
       usage: /sethome <homeNumber>
+   gethome:
+      description: Get a player's home
+      permission: easycraft.gethome
+      permission-message: You do not have permission to use this command.
+      usage: /gethome <homeNumber> <playerName>
  
 permissions:
    easycraft.rank:
@@ -143,6 +148,9 @@ permissions:
    easycraft.sethome:
       description: Allows you to use the /sethome command.
       default: true
+   easycraft.gethome:
+      description: Allows you to use the /gethome command.
+      default: op
       
    easycraft.tpa:
       description: Allows you to use the /tpa command.

@@ -23,13 +23,14 @@ The default config is available [here](https://github.com/ImDaBigBoss/EasyCraft/
 
 ## Command permissions
 Permissions are given by default execpt if a "{OP}" is written.<br>
-{CONSOLE}: You ***cannot*** use this command if you are not the console<br>
+{CONSOLE}: You **cannot** use this command if you are not the console<br>
 <br>
 easycraft.chatroom: use /chatroom<br>
 easycraft.confupdate: use /confupdate {CONSOLE}<br>
 easycraft.hiddenSpec: use /hiddenSpec {OP}<br>
 easycraft.home: use /home<br>
 easycraft.sethome: use /sethome<br>
+easycraft.gethome: use /gethome {OP}<br>
 easycraft.info: use /info<br>
 easycraft.maintenance: use /maintenance<br>
 easycraft.perks: use /perks<br>

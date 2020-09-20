@@ -17,25 +17,38 @@ public class CommandHome implements CommandExecutor {
     // This method is called, when somebody uses our command
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-    	if (sender instanceof Player) { //Get if executing origin is a player
-    	} else {
-    		sender.sendMessage(ChatColor.RED + "You must be a player to run this command!");
-    		return true;
-    	}
-    	
     	int maxHomes = 0;
     	if (yml.getConfig("homes.yml").contains("maxHomes"))
     			maxHomes = yml.getConfig("homes.yml").getInt("maxHomes");
     	
-    	if (args.length != 1) {
-    		sender.sendMessage(ChatColor.AQUA + "You must enter a home number! Your max home count is: " + maxHomes);
-    		return true;
-    	}
-    	
     	if (command.getName().equals("home")) {
+    		if (args.length != 1) {
+        		sender.sendMessage(ChatColor.AQUA + "You must enter a home number! Your max home count is: " + maxHomes);
+        		return true;
+        	}
+    		if (sender instanceof Player) { //Get if executing origin is a player
+        	} else {
+        		sender.sendMessage(ChatColor.RED + "You must be a player to run this command!");
+        		return true;
+        	}
     		home((Player)sender, args[0]);
     	} else if (command.getName().equals("sethome")) {
+    		if (args.length != 1) {
+        		sender.sendMessage(ChatColor.AQUA + "You must enter a home number! Your max home count is: " + maxHomes);
+        		return true;
+        	}
+    		if (sender instanceof Player) { //Get if executing origin is a player
+        	} else {
+        		sender.sendMessage(ChatColor.RED + "You must be a player to run this command!");
+        		return true;
+        	}
     		setHome((Player)sender, args[0], maxHomes);
+    	} else if (command.getName().equals("gethome")) {
+    		if (args.length != 2) {
+        		sender.sendMessage(ChatColor.AQUA + "You must enter a home number and a player name!");
+        		return true;
+        	}
+    		getHome(sender, args[0], args[1]);
     	} else {
     		
     	}
@@ -92,5 +105,23 @@ public class CommandHome implements CommandExecutor {
 	    
 	yml.saveConfig("homes.yml");
     	player.sendMessage(ChatColor.AQUA + "You set your home here!");
+    }
+    
+    public void getHome(CommandSender sender, String number, String targetP) {
+    	String target = easyCraft.getUUID(targetP);
+    	if (target == "") {
+    		sender.sendMessage("The player must be online!");
+    		return;
+    	}
+    	
+    	String info = target + "." + number;
+    	if (!yml.getConfig("homes.yml").contains(info + ".World")) {
+    		sender.sendMessage("This player does not have a home with the number: " + number);
+    		return;
+    	}
+    	
+    	String xyz = yml.getConfig("homes.yml").getDouble(info  + ".X") + " " + yml.getConfig("homes.yml").getDouble(info  + ".Y") + " " + yml.getConfig("homes.yml").getDouble(info  + ".Z");
+    	String world = yml.getConfig("homes.yml").getString(info + ".World");
+    	sender.sendMessage(targetP + "'s home " + number + " is located at " + xyz + " in the world named " + world + "!");
     }
 }

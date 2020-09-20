@@ -4,7 +4,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Date;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -57,6 +59,7 @@ public class easyCraft extends JavaPlugin {
         
         this.getCommand("home").setExecutor(new CommandHome());
         this.getCommand("sethome").setExecutor(new CommandHome());
+        this.getCommand("gethome").setExecutor(new CommandHome());
         
         this.saveDefaultConfig();
         yml.createConfig("homes.yml");
@@ -149,6 +152,17 @@ public class easyCraft extends JavaPlugin {
     	yml.getConfig("connections.yml").set("con" + num, new Date().toString() + ": " + player + " -> " + acstr);
     	yml.getConfig("connections.yml").set("connections", num);
     	yml.saveConfig("connections.yml");
+    }
+    
+    public static String getUUID(String playerName) {
+    	String out = "";
+    	try {
+    		out = plugin.getServer().getPlayer(playerName).getUniqueId().toString();
+    	} catch (Exception e) {
+    		
+    	}
+    	
+    	return out;
     }
 }
    
