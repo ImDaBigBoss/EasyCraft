@@ -11,7 +11,6 @@ public class MyListener implements Listener {
 	private final Ranks ranks = easyCraft.getRanks();
 	private Plugin plugin = easyCraft.getPlugin();
 	private ChatRoom chatRoom = easyCraft.getChatRoom();
-	private ymlUtils yml = easyCraft.getYml();
 
 	
 	@EventHandler
