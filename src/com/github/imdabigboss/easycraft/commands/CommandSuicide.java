@@ -20,7 +20,7 @@ public class CommandSuicide implements CommandExecutor {
     		return true;
     	}
     	
-    	plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "kill " + sender.getName());
+    	plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "kill \"" + sender.getName() + "\"");
     	return true;
     }
 }
