@@ -109,6 +109,7 @@ public class easyCraft extends JavaPlugin {
     	
     	String playerName = ChatColor.RESET + player.getDisplayName();
     	
+    	player.setCustomName(playerName);
     	player.setPlayerListName(playerName);
 		player.setPlayerListHeaderFooter(ChatColor.YELLOW + " --- " + serverName + " ---", ChatColor.YELLOW + dashes + "--------");
     }
