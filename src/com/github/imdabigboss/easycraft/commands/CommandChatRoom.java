@@ -2,6 +2,7 @@ package com.github.imdabigboss.easycraft.commands;
 
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import com.github.imdabigboss.easycraft.ChatRoom;
 import com.github.imdabigboss.easycraft.easyCraft;
@@ -10,6 +11,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class CommandChatRoom implements CommandExecutor {
 	private ChatRoom chatRoom = easyCraft.getChatRoom();
+	private Plugin plugin = easyCraft.getPlugin();
 	
     // This method is called, when somebody uses our command
     @Override
@@ -70,6 +72,31 @@ public class CommandChatRoom implements CommandExecutor {
     			sender.sendMessage(ChatColor.RED + "An error occured");
     		else
     			sender.sendMessage(ChatColor.AQUA + "You left the room!");
+    	} else if (args[0].equalsIgnoreCase("invite")) {
+    		if (args.length != 2) {
+    			SendHelp(sender);
+    			return true;
+    		}
+    		if (!chatRoom.isInRoom(sender.getName())) {
+    			sender.sendMessage(ChatColor.RED + "You are not in a room!");
+    			return true;
+    		}
+    		
+    		Player target = null;
+    		try {
+    			target = plugin.getServer().getPlayer(args[0]);
+    			if (!target.isOnline()) {
+    				sender.sendMessage(ChatColor.RED + args[0] + " is not online!");
+        			return true;
+    			}
+    		} catch (Exception e) {
+    			sender.sendMessage(ChatColor.RED + args[0] + " is not online!");
+    			return true;
+    		}
+    		
+    		String name = chatRoom.playerRooms.get(sender.getName());
+    		target.sendMessage(sender.getName() + " has invited you to their chatroom named " + name + " to join, enter " + ChatColor.AQUA + "/chatroom join " + name);
+    		
     	} else {
     		SendHelp(sender);
     	}
@@ -82,5 +109,6 @@ public class CommandChatRoom implements CommandExecutor {
     	sender.sendMessage(" - /chatroom create <RoomName>");
     	sender.sendMessage(" - /chatroom join <RoomName>");
     	sender.sendMessage(" - /chatroom leave");
+    	sender.sendMessage(" - /chatroom invite <player>");
     }
 }
