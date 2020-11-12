@@ -76,6 +76,7 @@ public class MyListener implements Listener {
 	    } else {
 	    	String out = "------ COMMAND: " + event.getPlayer().getName() + " ran: " + message + " ------";
 	        plugin.getServer().getConsoleSender().sendMessage(out);
+	        easyCraft.commandLog(event.getPlayer().getName(), message);
 	    }
 	}
 }

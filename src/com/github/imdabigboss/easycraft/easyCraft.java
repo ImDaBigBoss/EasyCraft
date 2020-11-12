@@ -3,6 +3,7 @@ package com.github.imdabigboss.easycraft;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Date;
+import java.util.logging.Level;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -63,6 +64,7 @@ public class easyCraft extends JavaPlugin {
         yml.createConfig("homes.yml");
         yml.createConfig("bans.yml");
         yml.createConfig("connections.yml");
+        yml.createConfig("commands.yml");
         if (!yml.getConfig("bans.yml").contains("bans"))
             yml.getConfig("bans.yml").set("bans", 0);
         
@@ -153,6 +155,17 @@ public class easyCraft extends JavaPlugin {
     	yml.getConfig("connections.yml").set("con" + num, new Date().toString() + ": " + player + " -> " + acstr);
     	yml.getConfig("connections.yml").set("connections", num);
     	yml.saveConfig("connections.yml");
+    }
+    
+    public static void commandLog(String player, String cmd) {
+    	int num = 0;
+    	if (yml.getConfig("commands.yml").contains("commands"))
+    		num = yml.getConfig("commands.yml").getInt("commands");
+    	
+    	num = num + 1;
+    	yml.getConfig("commands.yml").set("com" + num, new Date().toString() + ": " + player + " -> " + cmd);
+    	yml.getConfig("commands.yml").set("commands", num);
+    	yml.saveConfig("commands.yml");
     }
     
     public static String getUUID(String playerName) {
