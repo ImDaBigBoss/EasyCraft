@@ -50,6 +50,7 @@ public class easyCraft extends JavaPlugin {
         this.getCommand("tempban").setExecutor(new CommandTempBan());
         this.getCommand("hiddenSpec").setExecutor(new CommandHiddenSpec());
         this.getCommand("suicide").setExecutor(new CommandSuicide());
+        this.getCommand("headitem").setExecutor(new CommandHeadItem());
         
         this.getCommand("tpa").setExecutor(new CommandTpa());
         this.getCommand("tpahere").setExecutor(new CommandTpa());

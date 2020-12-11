@@ -100,6 +100,11 @@ commands:
       permission: easycraft.gethome
       permission-message: You do not have permission to use this command.
       usage: /gethome <homeNumber> <playerName>
+   headitem:
+      description: Set item on your head to what is in your hand
+      permission: easycraft.headitem
+      permission-message: You do not have permission to use this command.
+      usage: /headitem
  
 permissions:
    easycraft.rank:
@@ -140,6 +145,9 @@ permissions:
       default: op
    easycraft.suicide:
       description: Allows you to use the /suicide command.
+      default: true
+   easycraft.headitem:
+      description: Allows you to use the /headitem command.
       default: true
    
    easycraft.home:

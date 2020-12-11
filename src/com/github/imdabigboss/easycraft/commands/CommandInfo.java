@@ -1,11 +1,10 @@
 package com.github.imdabigboss.easycraft.commands;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.plugin.Plugin;
 
 import com.github.imdabigboss.easycraft.easyCraft;
-
-import net.md_5.bungee.api.ChatColor;
 
 public class CommandInfo implements CommandExecutor {
 	private Plugin plugin = easyCraft.getPlugin();

@@ -50,7 +50,7 @@ public class MyListener implements Listener {
 	public void chatFormat(AsyncPlayerChatEvent event){
 		Player p = event.getPlayer();
 		if (chatRoom.isInRoom(p.getName())) {
-			event.setFormat(ChatColor.BLUE + "Room> " + ChatColor.RESET + p.getDisplayName() + ChatColor.RESET + ": " + event.getMessage());
+			event.setFormat(ChatColor.BLUE + chatRoom.playerRooms.get(p.getName()) + "> " + ChatColor.RESET + p.getDisplayName() + ChatColor.RESET + ": " + event.getMessage());
 			
 			event.getRecipients().clear();
 			event.getRecipients().addAll(chatRoom.getRoomPlayers(p.getName()));

@@ -8,6 +8,7 @@ The default config is available [here](https://github.com/ImDaBigBoss/EasyCraft/
 ## What this plugin offers
 * Chat rooms
 * Automatic configuration reboot message + stops the server after an amount of time: 30 seconds by default
+* Put nay item that is in your hand on to your head
 * A hidden spectator mode (currently not finished)
 * An option to have homes
 * A server info command so that you don't have to keep repeating the same things over and over again
@@ -27,6 +28,7 @@ Permissions are given by default execpt if a "{OP}" is written.<br>
 <br>
 easycraft.chatroom: use /chatroom<br>
 easycraft.confupdate: use /confupdate {CONSOLE}<br>
+easycraft.headitem: use /headitem<br>
 easycraft.hiddenSpec: use /hiddenSpec {OP}<br>
 easycraft.home: use /home<br>
 easycraft.sethome: use /sethome<br>
