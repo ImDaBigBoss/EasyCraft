@@ -105,6 +105,11 @@ commands:
       permission: easycraft.headitem
       permission-message: You do not have permission to use this command.
       usage: /headitem
+   enderchest:
+      description: Open your enderchest wherever you are
+      permission: easycraft.enderchest
+      permission-message: You do not have permission to use this command.
+      usage: /enderchest
  
 permissions:
    easycraft.rank:
@@ -148,6 +153,9 @@ permissions:
       default: true
    easycraft.headitem:
       description: Allows you to use the /headitem command.
+      default: true
+   easycraft.enderchest:
+      description: Allows you to use the /enderchest command.
       default: true
    
    easycraft.home:

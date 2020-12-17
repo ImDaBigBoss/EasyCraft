@@ -22,10 +22,10 @@ public class CommandPerks implements CommandExecutor {
     		sender.sendMessage("Perks :");
     		sender.sendMessage("- superdog <DogName> (invincible dog with custom name)"); 
     		sender.sendMessage("  Price: DonatorIII");
-    		sender.sendMessage("- magicstick (knockback 5 + fire aspect)"); 
-    		sender.sendMessage("  Price: DonatorII+");
-    		sender.sendMessage("- shield <eyeofender/fire/sunset/mouth> (unrecommended, just fun)");
-    		sender.sendMessage("  Price: DonatorI+");
+    		sender.sendMessage("- portable enderchest (/enderchest)"); 
+    		sender.sendMessage("  Price: DonatorII and +");
+    		sender.sendMessage("- magicstick (knockback 10 + fire aspect)"); 
+    		sender.sendMessage("  Price: DonatorI and +");
     	} else if (args[0].equalsIgnoreCase("get")) {
     		if (sender instanceof Player) { //Get if executing origin is a player
         	} else {
