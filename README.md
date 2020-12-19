@@ -9,10 +9,10 @@ The default config is available [here](https://github.com/ImDaBigBoss/EasyCraft/
 * Chat rooms
 * Automatic configuration reboot message + stops the server after an amount of time: 30 seconds by default
 * Put nay item that is in your hand on to your head
-* A hidden spectator mode (currently not finished)
+* A hidden spectator mode **(currently not finished)**
 * An option to have homes
 * A server info command so that you don't have to keep repeating the same things over and over again
-* A maintenance mode so that non-operators can not join (Not working correctly)
+* A maintenance mode so that non-operators can not join **(Not working correctly)**
 * A perks command
 * A fully customizable ranking system
 * A command to set the max players that can join
