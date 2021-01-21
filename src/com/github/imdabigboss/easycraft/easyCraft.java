@@ -3,7 +3,6 @@ package com.github.imdabigboss.easycraft;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Date;
-import java.util.logging.Level;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -48,7 +47,6 @@ public class easyCraft extends JavaPlugin {
         this.getCommand("shout").setExecutor(new CommandShout());
         this.getCommand("info").setExecutor(new CommandInfo());
         this.getCommand("tempban").setExecutor(new CommandTempBan());
-        this.getCommand("hiddenSpec").setExecutor(new CommandHiddenSpec());
         this.getCommand("suicide").setExecutor(new CommandSuicide());
         this.getCommand("headitem").setExecutor(new CommandHeadItem());
         this.getCommand("enderchest").setExecutor(new CommandEnderchest());

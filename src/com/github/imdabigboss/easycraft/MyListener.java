@@ -71,7 +71,7 @@ public class MyListener implements Listener {
 	        arguments = message.substring(message.indexOf(" ") + 1, message.length());
 	    }
 	    
-	    if (command.equalsIgnoreCase("tpa") || command.equalsIgnoreCase("tpahere") || command.equalsIgnoreCase("tpaccept") || command.equalsIgnoreCase("tpdeny") || command.equalsIgnoreCase("home") || command.equalsIgnoreCase("sethome") || command.equalsIgnoreCase("spawn") || command.equalsIgnoreCase("msg") || command.equalsIgnoreCase("suicide")) {
+	    if (command.equalsIgnoreCase("tpa") || command.equalsIgnoreCase("tpahere") || command.equalsIgnoreCase("tpaccept") || command.equalsIgnoreCase("tpdeny") || command.equalsIgnoreCase("home") || command.equalsIgnoreCase("sethome") || command.equalsIgnoreCase("spawn") || command.equalsIgnoreCase("msg") || command.equalsIgnoreCase("suicide") || command.equalsIgnoreCase("chatroom") || command.equalsIgnoreCase("enderchest") || command.equalsIgnoreCase("shout") || command.equalsIgnoreCase("headitem") || command.equalsIgnoreCase("info") || command.equalsIgnoreCase("perks")) {
 	    	
 	    } else {
 	    	String out = "------ COMMAND: " + event.getPlayer().getName() + " ran: " + message + " ------";

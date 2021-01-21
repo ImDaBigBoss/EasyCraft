@@ -52,11 +52,6 @@ commands:
       permission: easycraft.tempban
       permission-message: You do not have permission to use this command.
       usage: /tempban <player> <hours/days> <amount> [reason]
-   hiddenSpec:
-      description: get into incognito spectator mode 
-      permission: easycraft.hiddenSpec
-      permission-message: You do not have permission to use this command.
-      usage: /hiddenSpec <on/off>
       
    suicide:
       description: Commit suicide
@@ -144,9 +139,6 @@ permissions:
       default: true
    easycraft.tempban:
       description: Allows you to use the /tempban command.
-      default: op
-   easycraft.hiddenSpec:
-      description: Allows you to use the /hiddenSpec command.
       default: op
    easycraft.suicide:
       description: Allows you to use the /suicide command.

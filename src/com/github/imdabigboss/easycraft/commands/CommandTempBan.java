@@ -1,16 +1,19 @@
 package com.github.imdabigboss.easycraft.commands;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.bukkit.BanList.Type;
 import org.bukkit.ChatColor;
 import org.bukkit.command.*;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import com.github.imdabigboss.easycraft.*;
 
-public class CommandTempBan implements CommandExecutor {
+public class CommandTempBan implements CommandExecutor, TabExecutor {
 	private final Plugin plugin = easyCraft.getPlugin();
 	private final ymlUtils yml = easyCraft.getYml();
 	
@@ -95,5 +98,35 @@ public class CommandTempBan implements CommandExecutor {
     	sender.sendMessage("The correct usage is:");
     	sender.sendMessage("/tempban <player> <hours/days> <length> [reason]");
     	sender.sendMessage("/tempban list");
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("tempban")) {
+        	if (args.length == 1) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		cmds.add("list");
+        		for (Player player : plugin.getServer().getOnlinePlayers()) {
+        			cmds.add(player.getName());
+        		}
+        		return cmds;
+        	} else if (args.length == 2) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		cmds.add("hours");
+        		cmds.add("days");
+        		return cmds;
+        	} else if (args.length == 3) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		cmds.add("<length>");
+        		return cmds;
+        	}  else if (args.length == 4) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		cmds.add("[reason]");
+        		return cmds;
+        	}
+        	
+        	return new ArrayList<>();
+        }
+        return new ArrayList<>();
     }
 }

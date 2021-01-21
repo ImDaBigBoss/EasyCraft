@@ -3,11 +3,15 @@ package com.github.imdabigboss.easycraft.commands;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 
 import com.github.imdabigboss.easycraft.*;
 
-public class CommandMaintenance implements CommandExecutor {
+public class CommandMaintenance implements CommandExecutor, TabExecutor {
 	private Plugin plugin = easyCraft.getPlugin();
 	
 	// This method is called, when somebody uses our command
@@ -45,6 +49,20 @@ public class CommandMaintenance implements CommandExecutor {
     	for (Player p:  plugin.getServer().getOnlinePlayers()) {
     		p.sendMessage(ChatColor.AQUA + player + " has enabled maintenance mode!");
     	}
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("maintenance")) {
+        	if (args.length == 1) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		cmds.add("on");
+        		cmds.add("off");
+        		return cmds;
+        	}
+        	return new ArrayList<>();
+        }
+        return new ArrayList<>();
     }
     
     public void sendHelp(CommandSender sender) {

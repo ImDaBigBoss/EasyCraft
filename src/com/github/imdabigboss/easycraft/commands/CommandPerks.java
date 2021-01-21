@@ -1,12 +1,15 @@
 package com.github.imdabigboss.easycraft.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import com.github.imdabigboss.easycraft.*;
 
-public class CommandPerks implements CommandExecutor {
+public class CommandPerks implements CommandExecutor, TabExecutor {
 	private final Perks perks = easyCraft.getPerks();
 	private final Plugin plugin = easyCraft.getPlugin();
 	
@@ -98,5 +101,50 @@ public class CommandPerks implements CommandExecutor {
     	} else {
     		sendAdminHelp(sender);
     	}
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("perks")) {
+        	if (args.length == 1) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		cmds.add("list");
+        		cmds.add("get");
+        		cmds.add("money");
+        		cmds.add("admin");
+        		return cmds;
+        	} else if (args.length == 2) {
+        		if (args[0].equalsIgnoreCase("get")) {
+        			ArrayList<String> cmds = new ArrayList<String>();
+        			cmds.add("superdog");
+        			cmds.add("enderchest");
+        			cmds.add("magicstick");
+        			return cmds;
+        		} else if (args[0].equalsIgnoreCase("admin")) {
+        			ArrayList<String> cmds = new ArrayList<String>();
+        			cmds.add("get");
+        			cmds.add("set");
+        			return cmds;
+        		}
+        		return new ArrayList<>();
+        	} else if (args.length == 3) {
+        		if (args[1].equalsIgnoreCase("get")) {
+        			ArrayList<String> cmds = new ArrayList<String>();
+            		for (Player player : plugin.getServer().getOnlinePlayers()) {
+            			cmds.add(player.getName());
+            		}
+            		return cmds;
+        		} else if (args[1].equalsIgnoreCase("set")) {
+        			ArrayList<String> cmds = new ArrayList<String>();
+            		for (Player player : plugin.getServer().getOnlinePlayers()) {
+            			cmds.add(player.getName());
+            		}
+            		return cmds;
+        		}
+        		return new ArrayList<>();
+        	}
+        	return new ArrayList<>();
+        }
+        return new ArrayList<>();
     }
 }

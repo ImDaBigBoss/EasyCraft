@@ -1,5 +1,8 @@
 package com.github.imdabigboss.easycraft.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
@@ -8,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 import com.github.imdabigboss.easycraft.ChatRoom;
 import com.github.imdabigboss.easycraft.easyCraft;
 
-public class CommandShout implements CommandExecutor {
+public class CommandShout implements CommandExecutor, TabExecutor {
 	private final Plugin plugin = easyCraft.getPlugin();
 	
     // This method is called, when somebody uses our command
@@ -32,5 +35,15 @@ public class CommandShout implements CommandExecutor {
     		return true;
     	}
     	return true;
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    	if (command.getName().equalsIgnoreCase("setmaxplayers")) {
+    		ArrayList<String> cmds = new ArrayList<String>();
+    		cmds.add("<message>");
+    		return cmds;
+    	}
+    	return new ArrayList<>();
     }
 }

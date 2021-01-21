@@ -1,5 +1,8 @@
 package com.github.imdabigboss.easycraft.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -8,7 +11,7 @@ import com.github.imdabigboss.easycraft.*;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class CommandTpa implements CommandExecutor {
+public class CommandTpa implements CommandExecutor, TabExecutor {
 	private Plugin plugin = easyCraft.getPlugin();
 	private TPAutils tpautil = easyCraft.getTpa();
 
@@ -107,6 +110,23 @@ public class CommandTpa implements CommandExecutor {
     			sender.sendMessage("You denyed the tpa request, but the player was no longer online anyway!");
     	}
     	return true;
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("tpa") || command.getName().equalsIgnoreCase("tpahere")) {
+        	if (args.length == 1) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		for (Player player : plugin.getServer().getOnlinePlayers()) {
+        			cmds.add(player.getName());
+        		}
+        		return cmds;
+        	}
+        	return new ArrayList<>();
+        } else if (command.getName().equalsIgnoreCase("tpacept") || command.getName().equalsIgnoreCase("tpdeny")) {
+        	return new ArrayList<>();
+        }
+        return new ArrayList<>();
     }
     
     public void sendHelp(CommandSender sender, String cmd) {

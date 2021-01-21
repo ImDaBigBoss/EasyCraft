@@ -1,5 +1,8 @@
 package com.github.imdabigboss.easycraft.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Location;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
@@ -7,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 
 import com.github.imdabigboss.easycraft.easyCraft;
 
-public class CommandSpawn implements CommandExecutor {
+public class CommandSpawn implements CommandExecutor, TabExecutor {
 	private final Plugin plugin = easyCraft.getPlugin();
 	
     // This method is called, when somebody uses our command
@@ -22,5 +25,10 @@ public class CommandSpawn implements CommandExecutor {
     		return true;
     	}
     	return true;
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        return new ArrayList<>();
     }
 }

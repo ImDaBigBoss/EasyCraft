@@ -1,5 +1,8 @@
 package com.github.imdabigboss.easycraft.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.*;
@@ -10,7 +13,7 @@ import com.github.imdabigboss.easycraft.*;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class CommandHome implements CommandExecutor {
+public class CommandHome implements CommandExecutor, TabExecutor {
 	private Plugin plugin = easyCraft.getPlugin();
 	private final ymlUtils yml = easyCraft.getYml();
 
@@ -123,5 +126,58 @@ public class CommandHome implements CommandExecutor {
     	String xyz = yml.getConfig("homes.yml").getDouble(info  + ".X") + " " + yml.getConfig("homes.yml").getDouble(info  + ".Y") + " " + yml.getConfig("homes.yml").getDouble(info  + ".Z");
     	String world = yml.getConfig("homes.yml").getString(info + ".World");
     	sender.sendMessage(targetP + "'s home " + number + " is located at " + xyz + " in the world named " + world + "!");
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    	if (sender instanceof Player) { //Get if executing origin is a player
+    	} else {
+    		return null;
+    	}
+    	
+    	Player player = (Player)sender;
+    	String uuid = player.getUniqueId().toString();
+    	
+        if (command.getName().equalsIgnoreCase("home")) {
+        	if (args.length == 1) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		
+        		int maxHomes = 0;
+            	if (yml.getConfig("homes.yml").contains("maxHomes"))
+            			maxHomes = yml.getConfig("homes.yml").getInt("maxHomes");
+            	
+            	for (int i = 1; i <= maxHomes; i++) {
+            		if (yml.getConfig("homes.yml").contains(uuid + "." + i + ".World"))
+            			cmds.add(Integer.toString(i));
+            	}
+        		
+        		return cmds;
+        	}
+        	
+        	return new ArrayList<>();
+        } else if (command.getName().equalsIgnoreCase("sethome") || command.getName().equalsIgnoreCase("gethome")) {
+        	if (args.length == 1) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		
+        		int maxHomes = 0;
+            	if (yml.getConfig("homes.yml").contains("maxHomes"))
+            			maxHomes = yml.getConfig("homes.yml").getInt("maxHomes");
+            	
+            	for (int i = 1; i <= maxHomes; i++) {
+            		cmds.add(Integer.toString(i));
+            	}
+        		
+        		return cmds;
+        	} else if (args.length == 2) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		for (Player p : plugin.getServer().getOnlinePlayers()) {
+        			cmds.add(p.getName());
+        		}
+        		return cmds;
+        	}
+        	
+        	return new ArrayList<>();
+        }
+        return new ArrayList<>();
     }
 }

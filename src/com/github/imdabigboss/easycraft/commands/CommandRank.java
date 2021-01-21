@@ -1,5 +1,8 @@
 package com.github.imdabigboss.easycraft.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
@@ -7,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 
 import com.github.imdabigboss.easycraft.*;
 
-public class CommandRank implements CommandExecutor {
+public class CommandRank implements CommandExecutor, TabExecutor {
 	private final Ranks ranks = easyCraft.getRanks();
 	private final Plugin plugin = easyCraft.getPlugin();
 	
@@ -80,6 +83,9 @@ public class CommandRank implements CommandExecutor {
     		} else {
     			sender.sendMessage(ChatColor.RED + "An error occured while removing your rank!");
     		}
+    		
+    		ranks.reloadRanks();
+    		ranks.reloadPlayerRanks();
     	} else if (args[0].equalsIgnoreCase("reload")) {
     		ranks.reloadRanks();
     		ranks.reloadPlayerRanks();
@@ -94,5 +100,71 @@ public class CommandRank implements CommandExecutor {
     		return false;
     	}
     	return true;
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    	if (command.getName().equalsIgnoreCase("rank")) {
+        	if (args.length == 1) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		cmds.add("get");
+        		cmds.add("set");
+        		cmds.add("add");
+        		cmds.add("remove");
+        		cmds.add("reload");
+        		cmds.add("list");
+        		return cmds;
+        	} else if (args.length == 2) {
+        		if (args[0].equalsIgnoreCase("get") || args[0].equalsIgnoreCase("set")) {
+        			ArrayList<String> cmds = new ArrayList<String>();
+        			for (Player player : plugin.getServer().getOnlinePlayers()) {
+        				cmds.add(player.getName());
+        			}
+        			return cmds;
+        		} else if (args[0].equalsIgnoreCase("add")) {
+        			ArrayList<String> cmds = new ArrayList<String>();
+        			cmds.add("<name>");
+        			return cmds;
+        		} else if (args[0].equalsIgnoreCase("remove")) {
+        			ArrayList<String> cmds = new ArrayList<String>();
+        			for (int i = 0; i < ranks.AllRanks.size(); i++) {
+            			cmds.add(ranks.AllRanks.get(i));
+            		}
+        			return cmds;
+        		}
+        		return new ArrayList<>();
+        	} else if (args.length == 3) {
+        		if (args[0].equalsIgnoreCase("set")) {
+        			ArrayList<String> cmds = new ArrayList<String>();
+        			for (int i = 0; i < ranks.AllRanks.size(); i++) {
+            			cmds.add(ranks.AllRanks.get(i));
+            		}
+        			return cmds;
+        		} else if (args[0].equalsIgnoreCase("add")) {
+        			ArrayList<String> cmds = new ArrayList<String>();
+        			cmds.add("AQUA");
+        			cmds.add("BLACK");
+        			cmds.add("BLUE");
+        			cmds.add("DARK_AQUA");
+        			cmds.add("DARK_BLUE");
+        			cmds.add("DARK_GRAY");
+        			cmds.add("DARK_GREEN");
+        			cmds.add("DARK_PURPLE");
+        			cmds.add("DARK_RED");
+        			cmds.add("GOLD");
+        			cmds.add("GRAY");
+        			cmds.add("GREEN");
+        			cmds.add("LIGHT_PURPLE");
+        			cmds.add("RED");
+        			cmds.add("WHITE");
+        			cmds.add("YELLOW");
+        			return cmds;
+        		}
+        		return new ArrayList<>();
+        	}
+        	
+        	return new ArrayList<>();
+        }
+        return new ArrayList<>();
     }
 }

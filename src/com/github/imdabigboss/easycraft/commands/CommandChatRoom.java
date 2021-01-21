@@ -1,5 +1,8 @@
 package com.github.imdabigboss.easycraft.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -9,7 +12,7 @@ import com.github.imdabigboss.easycraft.easyCraft;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class CommandChatRoom implements CommandExecutor {
+public class CommandChatRoom implements CommandExecutor, TabExecutor {
 	private ChatRoom chatRoom = easyCraft.getChatRoom();
 	private Plugin plugin = easyCraft.getPlugin();
 	
@@ -102,6 +105,29 @@ public class CommandChatRoom implements CommandExecutor {
     	}
     	
     	return true;
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("chatroom")) {
+        	if (args.length == 1) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		cmds.add("create");
+        		cmds.add("join");
+        		cmds.add("leave");
+        		cmds.add("invite");
+        		return cmds;
+        	}else if (args.length == 2 && args[0].equalsIgnoreCase("invite")) {
+        		ArrayList<String> cmds = new ArrayList<String>();
+        		for (Player player : plugin.getServer().getOnlinePlayers()) {
+        			cmds.add(player.getName());
+        		}
+        		return cmds;
+        	}
+        	
+        	return new ArrayList<>();
+        }
+        return new ArrayList<>();
     }
     
     public void SendHelp(CommandSender sender) {

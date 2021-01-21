@@ -5,12 +5,14 @@ import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.github.imdabigboss.easycraft.easyCraft;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class CommandSetMaxPlayers implements CommandExecutor {
+public class CommandSetMaxPlayers implements CommandExecutor, TabExecutor {
 	private Plugin plugin = easyCraft.getPlugin();
 	
     // This method is called, when somebody uses our command
@@ -44,6 +46,16 @@ public class CommandSetMaxPlayers implements CommandExecutor {
     		sender.sendMessage("Successfully set the max player count to: " + playerCount + "!");
     	}
     	return true;
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+    	if (command.getName().equalsIgnoreCase("setmaxplayers")) {
+    		ArrayList<String> cmds = new ArrayList<String>();
+    		cmds.add("<number>");
+    		return cmds;
+    	}
+    	return new ArrayList<>();
     }
     
     public void changeSlots(int slots) throws ReflectiveOperationException {

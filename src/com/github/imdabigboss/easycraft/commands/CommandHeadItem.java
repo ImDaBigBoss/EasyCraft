@@ -1,16 +1,14 @@
 package com.github.imdabigboss.easycraft.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.*;
-import org.bukkit.plugin.Plugin;
 
-import com.github.imdabigboss.easycraft.easyCraft;
-
-public class CommandHeadItem implements CommandExecutor {
-	private Plugin plugin = easyCraft.getPlugin();
-
+public class CommandHeadItem implements CommandExecutor, TabExecutor {
     // This method is called, when somebody uses our command
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -29,5 +27,10 @@ public class CommandHeadItem implements CommandExecutor {
     	pinv.setHelmet(handitem);
     	pinv.setItemInMainHand(headitem);
     	return true;
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        return new ArrayList<>();
     }
 }

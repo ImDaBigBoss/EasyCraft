@@ -1,12 +1,15 @@
 package com.github.imdabigboss.easycraft.commands;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.plugin.Plugin;
 
 import com.github.imdabigboss.easycraft.easyCraft;
 
-public class CommandInfo implements CommandExecutor {
+public class CommandInfo implements CommandExecutor, TabExecutor {
 	private Plugin plugin = easyCraft.getPlugin();
 
     // This method is called, when somebody uses our command
@@ -24,5 +27,10 @@ public class CommandInfo implements CommandExecutor {
     			sender.sendMessage(plugin.getConfig().getString("info" + i));
     	}
     	return true;
+    }
+    
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        return new ArrayList<>();
     }
 }
