@@ -65,8 +65,19 @@ public class easyCraft extends JavaPlugin {
         yml.createConfig("bans.yml");
         yml.createConfig("connections.yml");
         yml.createConfig("commands.yml");
+        
+        if (!yml.getConfig("homes.yml").contains("maxHomes"))
+            yml.getConfig("bans.yml").set("maxHomes", 2);
+        
         if (!yml.getConfig("bans.yml").contains("bans"))
             yml.getConfig("bans.yml").set("bans", 0);
+        
+        if (!yml.getConfig("connections.yml").contains("connections"))
+            yml.getConfig("connections.yml").set("connections", 0);
+        
+        if (!yml.getConfig("commands.yml").contains("commands"))
+            yml.getConfig("commands.yml").set("commands", 0);
+        
         
         for (Player player:  plugin.getServer().getOnlinePlayers()) {
         	customList(player);

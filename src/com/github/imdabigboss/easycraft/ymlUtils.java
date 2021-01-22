@@ -31,7 +31,6 @@ public class ymlUtils {
         customConfigFile.put(name, new File(plugin.getDataFolder(), name));
         
         if (!customConfigFile.get(name).exists()) {
-           customConfigFile.get(name).getParentFile().mkdirs();
            plugin.saveResource(name, false);
         }
 
