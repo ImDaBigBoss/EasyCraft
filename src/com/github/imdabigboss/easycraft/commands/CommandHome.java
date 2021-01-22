@@ -136,7 +136,7 @@ public class CommandHome implements CommandExecutor, TabExecutor {
     	}
     	
     	Player player = (Player)sender;
-    	String uuid = player.getUniqueId().toString();
+    	String uuid = easyCraft.getUUID(player.getName());
     	
         if (command.getName().equalsIgnoreCase("home")) {
         	if (args.length == 1) {
@@ -162,6 +162,10 @@ public class CommandHome implements CommandExecutor, TabExecutor {
         		int maxHomes = 0;
             	if (yml.getConfig("homes.yml").contains("maxHomes"))
             			maxHomes = yml.getConfig("homes.yml").getInt("maxHomes");
+            	
+            	if (maxHomes > 10) {
+            		maxHomes = 10;
+            	}
             	
             	for (int i = 1; i <= maxHomes; i++) {
             		cmds.add(Integer.toString(i));
