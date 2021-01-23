@@ -130,6 +130,7 @@ public class easyCraft extends JavaPlugin {
     }
     
     public static ChatColor stingToChatColor(String str) {
+    	str = str.toUpperCase();
         switch(str) {
             case "AQUA": return ChatColor.AQUA;
             case "BLACK": return ChatColor.BLACK;

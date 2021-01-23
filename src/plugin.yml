@@ -113,6 +113,9 @@ permissions:
    easycraft.maintenance:
       description: Allows you to use the /maintenance command.
       default: op
+   easycraft.maintenance.bypass:
+      description: Allows you to bypass the maintenance mode.
+      default: op
    easycraft.spawn:
       description: Allows you to use the /spawn command.
       default: true

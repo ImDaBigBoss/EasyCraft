@@ -32,7 +32,8 @@ easycraft.home: use /home<br>
 easycraft.sethome: use /sethome<br>
 easycraft.gethome: use /gethome {OP}<br>
 easycraft.info: use /info<br>
-easycraft.maintenance: use /maintenance<br>
+easycraft.maintenance: use /maintenance {OP}<br>
+easycraft.maintenance.bypass: bypass the maintenance mode {OP}<br>
 easycraft.perks: use /perks<br>
 easycraft.perks.admin: use /perks admin {OP}<br>
 easycraft.rank: use /rank {OP}<br>

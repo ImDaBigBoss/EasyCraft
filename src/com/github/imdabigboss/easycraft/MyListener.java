@@ -19,7 +19,7 @@ public class MyListener implements Listener {
 		Player player = event.getPlayer();
 		
 		if (plugin.getConfig().get("Maintenance").equals("on")) {
-			if (!player.isOp())
+			if (!player.hasPermission("easycraft.maintenance.bypass"))
 				player.kickPlayer("We very sorry " + ChatColor.YELLOW + player.getName() + ChatColor.RESET + " but the server has been put under " + ChatColor.RED + "maintenance mode");
 		}
 		
