@@ -87,13 +87,13 @@ public class CommandChatRoom implements CommandExecutor, TabExecutor {
     		
     		Player target = null;
     		try {
-    			target = plugin.getServer().getPlayer(args[0]);
+    			target = plugin.getServer().getPlayer(args[1]);
     			if (!target.isOnline()) {
-    				sender.sendMessage(ChatColor.RED + args[0] + " is not online!");
+    				sender.sendMessage(ChatColor.RED + args[1] + " is not online!");
         			return true;
     			}
     		} catch (Exception e) {
-    			sender.sendMessage(ChatColor.RED + args[0] + " is not online!");
+    			sender.sendMessage(ChatColor.RED + args[1] + " is not online!");
     			return true;
     		}
     		

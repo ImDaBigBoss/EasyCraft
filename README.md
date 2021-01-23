@@ -45,5 +45,4 @@ easycraft.tempban: use /tempban {OP}<br>
 easycraft.tpa, tpahere, tpaccept or tpdeny: use /tpa, tpahere, tpaccept, tpdeny<br>
 
 ## To-do
-* Add an option to enable or disable commands
-* Add a permission to bypass maintenance mode
+Nothing planned

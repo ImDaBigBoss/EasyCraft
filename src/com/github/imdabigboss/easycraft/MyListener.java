@@ -44,6 +44,7 @@ public class MyListener implements Listener {
     {
 		Player player = event.getPlayer();
 		easyCraft.connectionLog(player.getName(), 2);
+		chatRoom.leaveRoom(player);
     }
 	
 	@EventHandler
