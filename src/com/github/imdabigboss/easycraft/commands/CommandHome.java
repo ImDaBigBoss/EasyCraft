@@ -35,6 +35,17 @@ public class CommandHome implements CommandExecutor, TabExecutor {
         		return true;
         	}
     		home((Player)sender, args[0]);
+    	} else if (command.getName().equals("delhome")) {
+    		if (args.length != 1) {
+        		sender.sendMessage(ChatColor.AQUA + "You must enter a home number! Your max home count is: " + maxHomes);
+        		return true;
+        	}
+    		if (sender instanceof Player) { //Get if executing origin is a player
+        	} else {
+        		sender.sendMessage(ChatColor.RED + "You must be a player to run this command!");
+        		return true;
+        	}
+    		delhome((Player)sender, args[0]);
     	} else if (command.getName().equals("sethome")) {
     		if (args.length != 1) {
         		sender.sendMessage(ChatColor.AQUA + "You must enter a home number! Your max home count is: " + maxHomes);
@@ -61,7 +72,7 @@ public class CommandHome implements CommandExecutor, TabExecutor {
     public void home(Player player, String number) {
     	String info = player.getUniqueId() + "." + number;
     	if (!yml.getConfig("homes.yml").contains(info  + ".World")) {
-    		player.sendMessage("You have no home with that number!\nYou must go /home <homeNumber>");
+    		player.sendMessage("You have no home with that number!\nYou must go /sethome <homeNumber>");
     		return;
     	}
     	World world = plugin.getServer().getWorld(yml.getConfig("homes.yml").getString(info + ".World"));
@@ -82,6 +93,17 @@ public class CommandHome implements CommandExecutor, TabExecutor {
     	
     	player.teleport(loc);
     	player.sendMessage(ChatColor.AQUA + "You have been teleported home!");
+    }
+    
+    public void delhome(Player player, String number) {
+    	String info = player.getUniqueId() + "." + number;
+    	if (!yml.getConfig("homes.yml").contains(info  + ".World")) {
+    		player.sendMessage("You have no home with that number!\nYou must go /home <homeNumber>");
+    		return;
+    	}
+    	
+    	yml.getConfig("homes.yml").set(info, null);
+    	player.sendMessage(ChatColor.AQUA + "You have deleted your home!");
     }
     
     public void setHome(Player player, String number, int maxHomes) {
@@ -138,7 +160,7 @@ public class CommandHome implements CommandExecutor, TabExecutor {
     	Player player = (Player)sender;
     	String uuid = easyCraft.getUUID(player.getName());
     	
-        if (command.getName().equalsIgnoreCase("home")) {
+        if (command.getName().equalsIgnoreCase("home") || command.getName().equalsIgnoreCase("delhome")) {
         	if (args.length == 1) {
         		ArrayList<String> cmds = new ArrayList<String>();
         		

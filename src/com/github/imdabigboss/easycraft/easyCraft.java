@@ -59,6 +59,7 @@ public class easyCraft extends JavaPlugin {
         this.getCommand("home").setExecutor(new CommandHome());
         this.getCommand("sethome").setExecutor(new CommandHome());
         this.getCommand("gethome").setExecutor(new CommandHome());
+        this.getCommand("delhome").setExecutor(new CommandHome());
         
         this.saveDefaultConfig();
         yml.createConfig("homes.yml");

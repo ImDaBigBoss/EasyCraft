@@ -95,6 +95,12 @@ commands:
       permission: easycraft.gethome
       permission-message: You do not have permission to use this command.
       usage: /gethome <homeNumber> <playerName>
+   delhome:
+      description: Delete a home
+      permission: easycraft.delhome
+      permission-message: You do not have permission to use this command.
+      usage: /delhome <homeNumber>
+      
    headitem:
       description: Set item on your head to what is in your hand
       permission: easycraft.headitem
@@ -162,6 +168,9 @@ permissions:
    easycraft.gethome:
       description: Allows you to use the /gethome command.
       default: op
+   easycraft.delhome:
+      description: Allows you to use the /delhome command.
+      default: true
       
    easycraft.tpa:
       description: Allows you to use the /tpa command.
