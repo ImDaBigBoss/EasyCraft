@@ -46,3 +46,7 @@ easycraft.tpa, tpahere, tpaccept or tpdeny: use /tpa, tpahere, tpaccept, tpdeny<
 
 ## To-do
 Nothing planned
+
+
+# More info
+[My discord](https://discord.gg/DfqduqS)
