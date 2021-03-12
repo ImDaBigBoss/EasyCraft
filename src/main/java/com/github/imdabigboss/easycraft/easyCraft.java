@@ -1,7 +1,11 @@
 package com.github.imdabigboss.easycraft;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.messaging.PluginMessageListener;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,14 +20,14 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
 
 import com.github.imdabigboss.easycraft.commands.*;
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 
-
-public class easyCraft extends JavaPlugin {
+public class easyCraft extends JavaPlugin implements PluginMessageListener {
     private static Plugin plugin;
-    private static Ranks ranks;
-    private static Perks perks;
-    private static ChatRoom chatroom;
-    private static TPAutils tpa;
+    private static Perks perks = null;
+    private static TPAutils tpa = null;
     private static ymlUtils yml;
     
     public static String serverName = "My Server!";
@@ -31,38 +35,34 @@ public class easyCraft extends JavaPlugin {
     // Fired when plugin is first enabled
     @Override
     public void onEnable() {
-    	if (this.getConfig().contains("serverName"))
-    		serverName = this.getConfig().getString("serverName");
-    	
-        plugin = this;
-        ranks = new Ranks();
+    	plugin = this;
         perks = new Perks();
-        chatroom = new ChatRoom();
         tpa = new TPAutils();
         yml = new ymlUtils();
+        
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+    	getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
         
         getServer().getPluginManager().registerEvents(new MyListener(), this); //Enable the listener
         
         //Enable the commands
-        this.getCommand("rank").setExecutor(new CommandRank());
         this.getCommand("spawn").setExecutor(new CommandSpawn());
         this.getCommand("maintenance").setExecutor(new CommandMaintenance());
         this.getCommand("setmaxplayers").setExecutor(new CommandSetMaxPlayers());
         this.getCommand("confupdate").setExecutor(new CommandConfUpdate());
         this.getCommand("perks").setExecutor(new CommandPerks());
-        this.getCommand("chatroom").setExecutor(new CommandChatRoom());
-        this.getCommand("shout").setExecutor(new CommandShout());
+        this.getCommand("enderchest").setExecutor(new CommandEnderchest());
         this.getCommand("serverinfo").setExecutor(new CommandServerInfo());
         this.getCommand("tempban").setExecutor(new CommandTempBan());
         this.getCommand("suicide").setExecutor(new CommandSuicide());
         this.getCommand("headitem").setExecutor(new CommandHeadItem());
-        this.getCommand("enderchest").setExecutor(new CommandEnderchest());
         
         this.getCommand("tpa").setExecutor(new CommandTpa());
         this.getCommand("tpahere").setExecutor(new CommandTpa());
         this.getCommand("tpaccept").setExecutor(new CommandTpa());
         this.getCommand("tpdeny").setExecutor(new CommandTpa());
         
+
         this.getCommand("home").setExecutor(new CommandHome());
         this.getCommand("sethome").setExecutor(new CommandHome());
         this.getCommand("gethome").setExecutor(new CommandHome());
@@ -75,7 +75,7 @@ public class easyCraft extends JavaPlugin {
         yml.createConfig("commands.yml");
         
         if (!yml.getConfig("homes.yml").contains("maxHomes"))
-            yml.getConfig("bans.yml").set("maxHomes", 2);
+        	yml.getConfig("homes.yml").set("maxHomes", 2);
         
         if (!yml.getConfig("bans.yml").contains("bans"))
             yml.getConfig("bans.yml").set("bans", 0);
@@ -85,11 +85,6 @@ public class easyCraft extends JavaPlugin {
         
         if (!yml.getConfig("commands.yml").contains("commands"))
             yml.getConfig("commands.yml").set("commands", 0);
-        
-        
-        for (Player player:  plugin.getServer().getOnlinePlayers()) {
-        	customList(player);
-    	}
     }
     
     // Fired when plugin is disabled
@@ -102,16 +97,8 @@ public class easyCraft extends JavaPlugin {
         return plugin;
     }
     
-    public static Ranks getRanks() {
-        return ranks;
-    }
-    
     public static Perks getPerks() {
         return perks;
-    }
-    
-    public static ChatRoom getChatRoom() {
-        return chatroom;
     }
     
     public static TPAutils getTpa() {
@@ -120,21 +107,6 @@ public class easyCraft extends JavaPlugin {
     
     public static ymlUtils getYml() {
         return yml;
-    }
-    
-    public static void customList(Player player) {
-    	String dashes = "";
-        for (int i = 1; i <= serverName.length(); i++) {
-        	dashes = dashes + "-";
-        }
-    	
-    	String playerName = ChatColor.RESET + player.getDisplayName();
-    	
-    	player.setCustomName(playerName);
-    	player.setCustomNameVisible(true);
-    	player.setDisplayName(playerName);
-    	player.setPlayerListName(playerName);
-		player.setPlayerListHeaderFooter(ChatColor.YELLOW + " --- " + serverName + " ---", ChatColor.YELLOW + dashes + "--------");
     }
     
     public static ChatColor stingToChatColor(String str) {
@@ -208,6 +180,30 @@ public class easyCraft extends JavaPlugin {
     	yml.getConfig("commands.yml").set("com" + num, new Date().toString() + ": " + player + " -> " + cmd);
     	yml.getConfig("commands.yml").set("commands", num);
     	yml.saveConfig("commands.yml");
+    }
+    
+    @Override
+    public void onPluginMessageReceived(String channel, Player player, byte[] bytes) {
+        if (!channel.equalsIgnoreCase("BungeeCord")) {
+            return;
+        }
+        ByteArrayDataInput in = ByteStreams.newDataInput(bytes);
+        String subChannel = in.readUTF();
+        if (subChannel.equalsIgnoreCase("EasyCMD")) {
+            String cmd = in.readUTF();
+            String data = in.readUTF();
+            runBungeeCmd(player, cmd, data);
+        }
+    }
+    
+    private void runBungeeCmd(Player player, String cmd, String data) {
+    	if (cmd.equalsIgnoreCase("setdisplayname")) {
+    		String name = data.split(";")[0];
+    		Player p = this.getServer().getPlayer(data.split(";")[1]);
+    		p.setDisplayName(name);
+    		p.setCustomName(name);
+    		p.setCustomNameVisible(true);
+    	}
     }
 }
    

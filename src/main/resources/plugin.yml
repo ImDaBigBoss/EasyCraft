@@ -4,11 +4,6 @@ version: 1.10
 api-version: 1.15
 
 commands:
-   rank:
-      description: Get or set a pleyer's rank
-      permission: easycraft.rank
-      permission-message: You do not have permission to use this command.
-      usage: /rank <get/set/add/remove/reload/list> [rank/player] [rank] [color]
    spawn:
       description: Send to spawn
       usage: /spawn
@@ -32,16 +27,6 @@ commands:
       permission: easycraft.perks
       permission-message: You do not have permission to use this command.
       usage: /perks
-   chatroom:
-      description: Chat privately with your group
-      permission: easycraft.chatroom
-      permission-message: You do not have permission to use this command.
-      usage: /chatroom <join/create/leave> [room name]
-   shout:
-      description: Chat to people who are not in your chat room
-      permission: easycraft.shout
-      permission-message: You do not have permission to use this command.
-      usage: /shout <message>
    serverinfo:
       description: Get the info about the server
       permission: easycraft.info
@@ -113,9 +98,6 @@ commands:
       usage: /enderchest
  
 permissions:
-   easycraft.rank:
-      description: Allows you to use the /rank command.
-      default: op
    easycraft.maintenance:
       description: Allows you to use the /maintenance command.
       default: op
@@ -137,12 +119,6 @@ permissions:
    easycraft.perks.admin:
       description: Allows you to use the /perks admin command.
       default: op
-   easycraft.chatroom:
-      description: Allows you to use the /chatroom command.
-      default: true
-   easycraft.shout:
-      description: Allows you to use the /shout command.
-      default: true
    easycraft.serverinfo:
       description: Allows you to use the /serverinfo command.
       default: true

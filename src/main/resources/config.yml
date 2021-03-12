@@ -9,21 +9,5 @@ infoLines: 2
 info1: ---- Server Name ----
 info2: Site = example.com
 
-ranks:
-   rankNumber: 3 #Set the ranks number
-   rank1: #rank 1
-      name: Admin # rank1's name
-      color: RED # rank1's color (uses Bukkit's ChatColor enum)
-   rank2:
-      name: Supporter
-      color: GREEN
-   rank3:
-      name: Donator
-      color: BLUE
-
-#----- Set ranks here -----
-#PLAYERNAME: #you can use '' around the name if it contains other characters than text or numbers
-#  rank: RANKNAME
-
 tpa-keep-alive: 30 #in secounds
 confupdate-stop: 30 #in seconds

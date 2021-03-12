@@ -10,9 +10,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.plugin.Plugin;
 
 public class MyListener implements Listener {
-	private final Ranks ranks = easyCraft.getRanks();
 	private Plugin plugin = easyCraft.getPlugin();
-	private ChatRoom chatRoom = easyCraft.getChatRoom();
 
 	
 	@EventHandler
@@ -30,14 +28,10 @@ public class MyListener implements Listener {
 			player.sendMessage(ChatColor.GREEN + (String)plugin.getConfig().get("joinText"));
 		}
 		
-		String playerRank = ranks.getRank(player.getName());
-		ranks.displayRank(player, playerRank);
-		
 		if (plugin.getServer().getOnlinePlayers().size() >= plugin.getServer().getMaxPlayers()) {
 			plugin.getServer().broadcastMessage("There is now " + ChatColor.RED + plugin.getServer().getOnlinePlayers().size() + ChatColor.RESET + " players connected, maybe a few players could leave to free up space for other players wanting to join!");
 		}
 		
-		easyCraft.customList(player);
 		easyCraft.connectionLog(player.getName(), 1);
     }
 	
@@ -46,7 +40,6 @@ public class MyListener implements Listener {
     {
 		Player player = event.getPlayer();
 		easyCraft.connectionLog(player.getName(), 2);
-		chatRoom.leaveRoom(player.getName());
     }
 	
     @EventHandler
@@ -65,14 +58,8 @@ public class MyListener implements Listener {
 	@EventHandler
 	public void chatFormat(AsyncPlayerChatEvent event) {
 		Player p = event.getPlayer();
-		if (chatRoom.isInRoom(p.getName())) {
-			event.setFormat(ChatColor.BLUE + chatRoom.playerRooms.get(p.getName()) + "> " + ChatColor.RESET + p.getDisplayName() + ChatColor.RESET + ": " + ChatColor.GREEN + event.getMessage());
-			
-			event.getRecipients().clear();
-			event.getRecipients().addAll(easyCraft.stringsToPlayers(chatRoom.getRoomPlayers(p.getName())));
-		} else {
-			event.setFormat(p.getDisplayName() + ChatColor.RESET + ": " + event.getMessage());
-		}
+		
+		event.setFormat(p.getDisplayName() + ChatColor.RESET + ": " + event.getMessage());
 	}
 	
 	@EventHandler
