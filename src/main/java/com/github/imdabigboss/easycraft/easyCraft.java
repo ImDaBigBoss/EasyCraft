@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -203,6 +204,13 @@ public class easyCraft extends JavaPlugin implements PluginMessageListener {
     		p.setDisplayName(name);
     		p.setCustomName(name);
     		p.setCustomNameVisible(true);
+    	} else if (cmd.equalsIgnoreCase("togglespectator")) {
+    		Player p = this.getServer().getPlayer(data);
+    		if (p.getGameMode() == GameMode.SPECTATOR) {
+    			p.setGameMode(GameMode.SURVIVAL);
+    		} else {
+    			p.setGameMode(GameMode.SPECTATOR);
+    		}
     	}
     }
 }

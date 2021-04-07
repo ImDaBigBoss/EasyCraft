@@ -24,9 +24,9 @@ public class TPAutils {
 		
 		String typetext;
 		if (type == "here") {
-			typetext = "to you";
-		} else if (type == "there") {
 			typetext = "you to them";
+		} else if (type == "there") {
+			typetext = "to you";
 		} else {
 			return 1;
 		}

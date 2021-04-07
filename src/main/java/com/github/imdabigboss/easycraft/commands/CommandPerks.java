@@ -9,6 +9,8 @@ import org.bukkit.plugin.Plugin;
 
 import com.github.imdabigboss.easycraft.*;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class CommandPerks implements CommandExecutor, TabExecutor {
 	private final Perks perks = easyCraft.getPerks();
 	private final Plugin plugin = easyCraft.getPlugin();
@@ -22,13 +24,14 @@ public class CommandPerks implements CommandExecutor, TabExecutor {
     	}
     	
     	if (args[0].equalsIgnoreCase("list")) {
-    		sender.sendMessage("Perks :");
+    		sender.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "Perks:");
+    		sender.sendMessage(ChatColor.AQUA + "DonatorIII:");
     		sender.sendMessage("- superdog <DogName> (invincible dog with custom name)"); 
-    		sender.sendMessage("  Price: DonatorIII");
-    		sender.sendMessage("- portable enderchest (/enderchest)"); 
-    		sender.sendMessage("  Price: DonatorII and +");
-    		sender.sendMessage("- magicstick (knockback 10 + fire aspect)"); 
-    		sender.sendMessage("  Price: DonatorI and +");
+    		sender.sendMessage("- supercat <CatName> (invincible cat with custom name)");
+    		sender.sendMessage(ChatColor.AQUA + "DonatorII and +:");
+    		sender.sendMessage("- enderchest (portable enderchest, /enderchest)");
+    		sender.sendMessage(ChatColor.AQUA + "DonatorI and +:");
+    		sender.sendMessage("- magicstick (knockback 10 + fire aspect stick)"); 
     	} else if (args[0].equalsIgnoreCase("get")) {
     		if (sender instanceof Player) { //Get if executing origin is a player
         	} else {
@@ -117,6 +120,7 @@ public class CommandPerks implements CommandExecutor, TabExecutor {
         		if (args[0].equalsIgnoreCase("get")) {
         			ArrayList<String> cmds = new ArrayList<String>();
         			cmds.add("superdog");
+        			cmds.add("supercat");
         			cmds.add("enderchest");
         			cmds.add("magicstick");
         			return cmds;

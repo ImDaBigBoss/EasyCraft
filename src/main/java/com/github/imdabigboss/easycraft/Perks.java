@@ -54,6 +54,18 @@ public class Perks {
 			spendMoney(sender.getName(), MONEY);
 			plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), command);
 			return "";
+		} else if (args[1].equalsIgnoreCase("supercat")) {
+			int MONEY = 20;
+			
+			if (getMoney(sender.getName()) < MONEY)
+				return "You do not have enough money to buy that!";
+			if (args.length != 3)
+				return "You must enter a name for your pet!";
+			
+			String command = "give \"" + sender.getName() + "\" cat_spawn_egg{EntityTag:{id:\"minecraft:wolf\",CustomName:\"\\\"" + args[2] + "\\\"\",CustomNameVisible:1,Invulnerable:1,Age:0,Owner:\"" + sender.getName() + "\"}}";
+			spendMoney(sender.getName(), MONEY);
+			plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), command);
+			return "";
 		} else {
 			return "That perk does not exist!";
 		}
